@@ -8,9 +8,11 @@ FILL_JS = """
   const g = id => document.getElementById(id);
   for (const k of ["name","handle","text","date","rep","rt","lk","vw"]) g(k).value = d[k];
   g("ver").value = d.verified ? "1" : "0";
+  g("theme").value = d.theme === "dark" ? "dark" : "light";
   ["sDate","sRep","sRt","sLk","sVw"].forEach(i => g(i).checked = !d.clean);
   g("pAv").style.backgroundImage = d.avatar ? `url(${d.avatar})` : "";
   if (d.avatar) g("pAv").textContent = "";
+  const sw = document.querySelectorAll(".sw"); if (sw[d.bg]) sw[d.bg].click();
   setMedia(d.media || "");
   upd();
 }
